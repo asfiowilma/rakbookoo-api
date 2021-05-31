@@ -16,12 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
-from shelf import views
+from shelf import views as shelf
+from author import views as author
+from book import views as book
+from tags import views as tags
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
-router.register(r'groups', views.GroupViewSet)
-router.register(r'shelf', views.ShelfViewSet)
+router.register(r'users', shelf.UserViewSet)
+router.register(r'shelf', shelf.ShelfViewSet)
+router.register(r'author', author.AuthorViewSet)
+router.register(r'tags', tags.TagViewSet)
+router.register(r'book', book.BookViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
